@@ -8,8 +8,10 @@ public:
 	Graph();
 	void createGraph(int size);
 	void draw(sf::RenderWindow& window);
+
 private:
 	std::vector<std::vector<Node>> m_graph;
+	int m_graphSize;
 };
 
 

@@ -1,19 +1,22 @@
 #include "graph.h"
 
 Graph::Graph()
+	:m_graphSize(20)
 {
-	createGraph(20);
+	createGraph(m_graphSize);
 }
 
 void Graph::createGraph(int size)
 {
-	std::vector<Node> row;
 
-	for (int i = 0 ; i < size ; ++i)
+	for (int i = 0 ; i < size; ++i)
 	{
+		std::vector<Node> row;
+
 		for (int j = 0; j < size; ++j)
 		{
-			row.push_back(Node(sf::Vector2f(i * 20 + 9, j* 20 +9)));
+			Node node(sf::Vector2f(j * (size + 10) + 10, i * (size + 10) + 10));
+			row.push_back(node);
 		}
 		m_graph.push_back(row);
 	}
@@ -25,7 +28,7 @@ void Graph::draw(sf::RenderWindow& window)
 	{
 		for (int j = 0; j < m_graph[0].size(); ++j)
 		{
-			m_graph[i][j].draw(window);
+			m_graph[j][i].draw(window);
 		}
 	}
 }
